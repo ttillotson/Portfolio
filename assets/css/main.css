@@ -2019,6 +2019,8 @@ input, select, textarea {
 			font-style: normal;
 			font-weight: normal;
 			text-transform: none !important;
+			font-size: 1.25em;
+			line-height: 1.75em;
 		}
 
 		.icon > .label {
@@ -2797,7 +2799,7 @@ input, select, textarea {
 /* Wrapper */
 
 	#wrapper {
-		background: #fff;
+		background: #C4CBCE;
 		padding-left: 23em;
 	}
 
@@ -2818,7 +2820,7 @@ input, select, textarea {
 /* Footer */
 
 	#footer {
-		background: #fafafa;
+		/* background: #fafafa; */
 		border-top: 0;
 		color: #c0c0c0;
 		overflow: hidden;
