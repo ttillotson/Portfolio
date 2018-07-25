@@ -1,3 +1,10 @@
+// Banner Credit CodePen User: satchmorun <https://codepen.io/satchmorun/pen/OyxJme>
+// To Adjust Banner Image
+// Speed: Line 43 -> setTimeout on loop call
+// Color: 
+// 
+
+
 document.addEventListener("DOMContentLoaded", () => {
 
     var canvas = document.getElementById('canvas');
@@ -17,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /*---------------------------------------------------------------------------*/
 
-    var W, H, frame, t0, time;
+    var W, H, frame, t0, time, stop;
     var DPR = devicePixelRatio;
 
     function dpr(n) { return n * DPR; }
@@ -35,27 +42,33 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function loop(t) {
-    frame = requestAnimationFrame(loop);
-    draw();
-    time++;
+        if (!stop) {
+            frame = requestAnimationFrame(() => setTimeout(loop, 40));
+            console.log(`called ${time}`);
+            // setInterval(draw(), 20000);
+            draw();
+            time++;
+        }
     }
 
     function pause() {
-    cancelAnimationFrame(frame);
-    frame = null;
+        cancelAnimationFrame(frame);
+        stop = true;
+        frame = null;
     }
 
     function play() {
-    frame = frame || requestAnimationFrame(loop);
+        frame = frame || requestAnimationFrame(loop);
     }
 
     function reset() {
-    cancelAnimationFrame(frame);
-    resize();
-    ctx.clearRect(0, 0, W, H);
-    init();
-    time = 0;
-    frame = requestAnimationFrame(loop);
+        cancelAnimationFrame(frame);
+        resize();
+        ctx.clearRect(0, 0, W, H);
+        init();
+        time = 0;
+        stop = false;
+        frame = requestAnimationFrame(loop);
     }
 
     /*---------------------------------------------------------------------------*/
@@ -111,126 +124,126 @@ document.addEventListener("DOMContentLoaded", () => {
         var cc = this.bins[c];
         if (!cc) continue;
         for (var r = row-1; r <= row+1; r++) {
-        bin = cc[r];
-        if (!Array.isArray(bin)) return;
-        for (var i = 0; i < NODES_PER_BIN; i++) {
-            var noded2 = bin[i].d2(p);
-            if (noded2 < d2) {
-            closest = bin[i];
-            d2 = noded2;
+            bin = cc[r];
+            if (!Array.isArray(bin)) return;
+            for (var i = 0; i < NODES_PER_BIN; i++) {
+                var noded2 = bin[i].d2(p);
+                if (noded2 < d2) {
+                    closest = bin[i];
+                    d2 = noded2;
+                }
             }
-        }
         }
     }
     return closest;
     };
 
     Lattice.prototype.each = function(cb) {
-    for (var c = 0; c < this.ncols; c++) {
-        for (var r = 0; r < this.nrows; r++) {
-        var bin = this.bins[c][r];
-        for (var i = 0; i < NODES_PER_BIN; i++) {
-            cb(bin[i]);
+        for (var c = 0; c < this.ncols; c++) {
+            for (var r = 0; r < this.nrows; r++) {
+                var bin = this.bins[c][r];
+                for (var i = 0; i < NODES_PER_BIN; i++) {
+                    cb(bin[i]);
+                }
+            }
         }
-        }
-    }
     };
 
     Lattice.prototype.eachActive = function(cb) {
-    this.each(function(node) {
-        if (!node.isActive) return;
-        cb(node);
-    });
+        this.each(function(node) {
+            if (!node.isActive) return;
+            cb(node);
+        });
     };
 
     function Node(lattice, x, y) {
-    this.lattice = lattice;
-    this.x = x;
-    this.y = y;
-    this.isActive = false;
-    this.activatedAt = 0;
-    this.friends = [];
-    this.p = 1;
+        this.lattice = lattice;
+        this.x = x;
+        this.y = y;
+        this.isActive = false;
+        this.activatedAt = 0;
+        this.friends = [];
+        this.p = 1;
     }
 
     Node.prototype.activate = function(t, p) {
-    this.isActive = true;
-    this.activatedAt = t;
-    this.friends = this.lattice.findAFriend(this, 3);
-    this.p = p;
+        this.isActive = true;
+        this.activatedAt = t;
+        this.friends = this.lattice.findAFriend(this, 3);
+        this.p = p;
     };
 
     Node.prototype.update = function(t) {
-    this.p *= DECAY;
-    var p = this.p;
-    if (this.isActive && (t - this.activatedAt >= 2)) {
-        this.isActive = false;
-        this.friends.forEach(function(friend) {
-        if (random() < p) friend.activate(t, p);
-        });
-    }
+        this.p *= DECAY;
+        var p = this.p;
+        if (this.isActive && (t - this.activatedAt >= 2)) {
+            this.isActive = false;
+            this.friends.forEach(function(friend) {
+            if (random() < p) friend.activate(t, p);
+            });
+        }
     };
 
     Node.prototype.d2 = function(p) {
-    var dx = this.x - p.x;
-    var dy = this.y - p.y;
-    return dx*dx + dy*dy;
-    }
+        var dx = this.x - p.x;
+        var dy = this.y - p.y;
+        return dx*dx + dy*dy;
+    };
 
     function Arr(n) {
-    this.arr = new Array(n);
-    this.len = 0;
+        this.arr = new Array(n);
+        this.len = 0;
     }
 
     Arr.prototype.push = function(x) { this.arr[this.len++] = x; };
     Arr.prototype.concat = function(a) { 
-    for (var i = 0; i < a.length; i++) this.push(a[i]);
+        for (var i = 0; i < a.length; i++) this.push(a[i]);
     };
     Arr.prototype.clear = function() { this.len = 0; };
     Arr.prototype.each = function(cb) {
-    for (var i = 0; i < this.len; i++) cb(this.arr[i]);
+        for (var i = 0; i < this.len; i++) cb(this.arr[i]);
     };
 
     /*---------------------------------------------------------------------------*/
 
     function Circle(r, x, y, vx, vy) {
-    this.r = r;
-    this.x = x;
-    this.y = y;
-    this.vx = vx;
-    this.vy = vy;
-    };
+        this.r = r;
+        this.x = x;
+        this.y = y;
+        this.vx = vx;
+        this.vy = vy;
+    }
 
     Circle.prototype.draw = function() {
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.r, 0, TAU);
-    ctx.closePath();
-    ctx.strokeStyle = 'rgba(123, 123, 123, 0.4)';
-    ctx.stroke();
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.r, 0, TAU);
+        ctx.closePath();
+        ctx.strokeStyle = 'rgba(123, 123, 123, 0.4)';
+        ctx.stroke();
     };
 
     Circle.prototype.intersections = function(other) {
-    var dx = this.x - other.x;
-    var dy = this.y - other.y;
-    var d = sqrt(dx*dx + dy*dy);
+        var dx = this.x - other.x;
+        var dy = this.y - other.y;
+        var d = sqrt(dx*dx + dy*dy);
 
-    if (d >= this.r + other.r) return [];
-    if (d < abs(this.r - other.r)) return [];
+        if (d >= this.r + other.r) return [];
+        if (d < abs(this.r - other.r)) return [];
 
-    var a = (this.r*this.r - other.r*other.r + d*d) / (2 * d);
+        var a = (this.r*this.r - other.r*other.r + d*d) / (2 * d);
 
-    var x = this.x - (dx*a/d);
-    var y = this.y - (dy*a/d);
+        var x = this.x - (dx*a/d);
+        var y = this.y - (dy*a/d);
 
-    var h = sqrt(this.r*this.r - a*a);
+        var h = sqrt(this.r*this.r - a*a);
 
-    var rx = -dy*h/d;
-    var ry = dx*h/d;
+        var rx = -dy*h/d;
+        var ry = dx*h/d;
 
-    return [
-        {x: x+rx, y: y+ry},
-        {x: x-rx, y: y-ry}
-    ];
+        return [
+            {x: x+rx, y: y+ry},
+            {x: x-rx, y: y-ry}
+        ];
     };
 
     /*---------------------------------------------------------------------------*/
@@ -247,38 +260,38 @@ document.addEventListener("DOMContentLoaded", () => {
     var intersections = new Arr(C*C);
 
     function init() {
-    var res = dpr(6);
-    lattice = new Lattice(W, H, res);  
-    ons = new Arr(floor((W/res) * (H/res) * NODES_PER_BIN));
-    
-    var mindim = min(W, H);
-    
-    for (var i = 0; i < C; i++) {
-        circles[i] = new Circle(rint(floor(mindim/8), floor(mindim/4)), 
-                                rint(0, W), rint(0, H), 
-                                rrng(dpr(-2), dpr(2)), rrng(dpr(-2), dpr(2)));
-    }
-    circles[C++] = new Circle(floor(mindim/4), W/2, H/2, 0, 0);
+        var res = dpr(12);
+        lattice = new Lattice(W, H, res);  
+        ons = new Arr(floor((W/res) * (H/res) * NODES_PER_BIN));
+        
+        var mindim = min(W, H);
+        
+        for (var i = 0; i < C; i++) {
+            circles[i] = new Circle(rint(floor(mindim/8), floor(mindim/4)), 
+                                    rint(0, W), rint(0, H), 
+                                    rrng(dpr(-2), dpr(2)), rrng(dpr(-2), dpr(2)));
+        }
+        circles[C++] = new Circle(floor(mindim/4), W/2, H/2, 0, 0);
     }
 
     function draw() { 
-    ctx.fillStyle = 'rgba(34, 49, 63, 0.2)';
-    ctx.fillRect(0, 0, W, H);
-    updateCircles();
-    activateIntersections();
-    
-    lattice.eachActive(function(node) { node.update(time); });
-    ons.clear();
-    lattice.eachActive(function(node) {
-        if (!node.isActive) return;
-        ons.push(node);
-    });  
-    drawLines(ons, 'rgba(93,202,74, 0.3)', dpr(0.5));
+        ctx.fillStyle = 'rgba(34, 49, 63, 0.2)';
+        ctx.fillRect(0, 0, W, H);
+        updateCircles();
+        activateIntersections();
+        
+        lattice.eachActive(function(node) { node.update(time); });
+        ons.clear();
+        lattice.eachActive(function(node) {
+            if (!node.isActive) return;
+            ons.push(node);
+        });  
+        drawLines(ons, 'rgba(93,202,74, 0.3)', dpr(0.5));
 
 
-    /*for (var i = 0; i < C; i++) {
-        circles[i].draw();
-    }*/
+        /*for (var i = 0; i < C; i++) {
+            circles[i].draw();
+        }*/
     }
 
     function updateCircles() {
@@ -309,30 +322,32 @@ document.addEventListener("DOMContentLoaded", () => {
     function activateIntersections() {
     intersections.each(function(ix) {
         var node = lattice.findNearest(ix);
-        if (node) node.activate(time, 0.95);
+        if (node) node.activate(time, 1.5);
     });
     }
 
     function drawLines(nodes, color, width) {
-    ctx.strokeStyle = color;
-    ctx.lineWidth = width;
-    ctx.beginPath();
-    nodes.each(function(node) {
-        node.friends.forEach(function(friend) {
-        ctx.moveTo(node.x, node.y);
-        ctx.lineTo(friend.x, friend.y);
+        ctx.strokeStyle = color;
+        ctx.lineWidth = width;
+        ctx.beginPath();
+        nodes.each(function(node) {
+            node.friends.forEach(function(friend) {
+            ctx.moveTo(node.x, node.y);
+            ctx.lineTo(friend.x, friend.y);
+            });
         });
-    });
-    ctx.closePath();
-    ctx.stroke();
+        ctx.closePath();
+        ctx.stroke();
     }
 
 
     /*---------------------------------------------------------------------------*/
     document.onclick = function() {
-    if (frame) {
-        reset();
-    }
+        if (frame) {
+            pause();
+        } else {
+            reset();
+        }
     };
     reset();
 });
