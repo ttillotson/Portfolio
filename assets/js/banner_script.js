@@ -343,12 +343,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /*---------------------------------------------------------------------------*/
-    canvas.onclick = function() {
-        if (frame) {
-            pause();
-        } else {
-            reset();
-        }
-    };
+    // canvas.onclick = function() {
+    //     if (frame) {
+    //         pause();
+    //     } else {
+    //         reset();
+    //     }
+    // };
     reset();
 });

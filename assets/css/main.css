@@ -2014,7 +2014,7 @@ input, select, textarea {
 			font-style: normal;
 			font-weight: normal;
 			text-transform: none !important;
-			font-size: 1.25em;
+			font-size: 1.5em;
 			line-height: 1.75em;
 		}
 
@@ -2202,9 +2202,9 @@ input, select, textarea {
 		padding-left: 1em;
 	}
 
-		ul li {
+		/* ul li {
 			padding-left: 0.5em;
-		}
+		} */
 
 		ul.alt {
 			list-style: none;
@@ -2397,7 +2397,6 @@ input, select, textarea {
 
 		ul.icons li {
 			display: inline-block;
-			padding: 0 1em 0 0;
 		}
 
 			ul.icons li:last-child {
@@ -2762,7 +2761,7 @@ input, select, textarea {
 
 				#header > nav ul li {
 					display: block;
-					padding: 0;
+					padding: 0.75em 0;
 				}
 
 					#header > nav ul li a {
@@ -2877,8 +2876,28 @@ input, select, textarea {
 				}
 
 				#header > footer {
-					padding: 1.5em;
+					padding: 1em;
 				}
+
+		/* Nav */
+			#nav {
+				display: flex;
+			}
+
+			#nav > .nav_frame {
+				display: flex;
+				flex-direction: column;
+				flex-grow: 1;
+				justify-content: space-between;
+			}
+
+			#nav > .nav_frame #splash_icon {
+				margin-top: 0.5em;
+				height: 3em;
+			}
+			#nav > .nav_frame #splash_icon img {
+				width: 2.5em;
+			}
 
 		/* Wrapper */
 
@@ -2891,6 +2910,10 @@ input, select, textarea {
 			#main > section > .container {
 				padding: 4em 0 2em 0;
 				margin: auto;
+			}
+
+			#canvas {
+				/* position: absolute; */
 			}
 
 	}
@@ -2911,22 +2934,23 @@ input, select, textarea {
 				width: 3.5em;
 			}
 
-		/* Wrapper */
-
+			
+			/* Wrapper */
+			
 			#wrapper {
 				padding-left: 3.5em;
 			}
-
-	}
-
-/* Medium */
-
-	#titleBar {
-		display: none;
-	}
-
-	@media screen and (max-width: 1024px) {
-
+			
+		}
+		
+		/* Medium */
+		
+		#titleBar {
+			display: none;
+		}
+		
+		@media screen and (max-width: 1024px) {
+			
 		/* Basic */
 
 			html, body {
