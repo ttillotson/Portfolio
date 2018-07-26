@@ -343,7 +343,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /*---------------------------------------------------------------------------*/
-    document.onclick = function() {
+    canvas.onclick = function() {
         if (frame) {
             pause();
         } else {
