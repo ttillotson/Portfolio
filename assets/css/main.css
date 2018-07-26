@@ -2802,18 +2802,23 @@ input, select, textarea {
 	#main > section {
 		border-top: solid 6px #f4f4f4;
 		min-height: 100vh;
+		display: flex;
+		justify-content: center;
 	}
 
 		#main > section > .container {
 			padding: 6em 0 4em 0;
+			align-content: center;
+			margin: auto;
 		}
 
 		#main > section:first-child {
 			border-top: 0;
+			display: block;
 		}
-		#main > section:last-child {
-			min-height: 100vh;
-		}
+		/* #main > #contact {
+			min-height: 86vh;
+		} */
 
 /* Footer */
 
@@ -2883,6 +2888,7 @@ input, select, textarea {
 
 			#main > section > .container {
 				padding: 4em 0 2em 0;
+				margin: auto;
 			}
 
 	}
@@ -3186,6 +3192,7 @@ input, select, textarea {
 
 			#main > section > .container {
 				padding: 2em 0 0 0;
+				margin: auto;
 			}
 
 		/* Footer */
