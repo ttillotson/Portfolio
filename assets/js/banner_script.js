@@ -1,8 +1,8 @@
 // Banner Credit CodePen User: satchmorun <https://codepen.io/satchmorun/pen/OyxJme>
 // To Adjust Banner Image
 // Speed: Line 43 -> setTimeout on loop call
-// Color: 
-// 
+// Color: Line 289 
+// Zoom: Line 263 -> dpr parameter
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -34,8 +34,10 @@ document.addEventListener("DOMContentLoaded", () => {
     // var h = innerHeight;
     var h = 400;
     
-    canvas.style.width = w+'px';
-    canvas.style.height = h+'px';
+    // canvas.style.width = w+'px';
+    // canvas.style.height = h+'px';
+    canvas.style.width = '100%';
+    canvas.style.height = '100%';
     
     W = canvas.width = w * DPR;
     H = canvas.height = h * DPR;
@@ -44,8 +46,6 @@ document.addEventListener("DOMContentLoaded", () => {
     function loop(t) {
         if (!stop) {
             frame = requestAnimationFrame(() => setTimeout(loop, 40));
-            console.log(`called ${time}`);
-            // setInterval(draw(), 20000);
             draw();
             time++;
         }
@@ -260,7 +260,7 @@ document.addEventListener("DOMContentLoaded", () => {
     var intersections = new Arr(C*C);
 
     function init() {
-        var res = dpr(12);
+        var res = dpr(25);
         lattice = new Lattice(W, H, res);  
         ons = new Arr(floor((W/res) * (H/res) * NODES_PER_BIN));
         
