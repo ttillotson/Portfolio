@@ -1,7 +1,8 @@
 // Banner Credit CodePen User: satchmorun <https://codepen.io/satchmorun/pen/OyxJme>
 // To Adjust Banner Image
 // Speed: Line 43 -> setTimeout on loop call
-// Color: Line 289 
+// Background - Color: Line 289 
+// Line - Color: Line 289 
 // Zoom: Line 263 -> dpr parameter
 
 

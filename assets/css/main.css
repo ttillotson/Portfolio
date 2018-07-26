@@ -2801,6 +2801,7 @@ input, select, textarea {
 
 	#main > section {
 		border-top: solid 6px #f4f4f4;
+		min-height: 100vh;
 	}
 
 		#main > section > .container {
@@ -2809,6 +2810,9 @@ input, select, textarea {
 
 		#main > section:first-child {
 			border-top: 0;
+		}
+		#main > section:last-child {
+			min-height: 100vh;
 		}
 
 /* Footer */
