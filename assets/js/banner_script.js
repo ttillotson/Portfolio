@@ -1,9 +1,10 @@
 // Banner Credit CodePen User: satchmorun <https://codepen.io/satchmorun/pen/OyxJme>
 // To Adjust Banner Image
-// Speed: Line 49 -> setTimeout on loop call
-// Background - Color: Line 289 
-// Line - Color: Line 289 
-// Zoom: Line 264 -> dpr parameter
+// Speed: Line 50 -> setTimeout on loop call
+// Background - Color: Line 280 
+// Line - Color/Thickness: Line 291 
+// Zoom: Line 265 -> dpr parameter
+// Density Line 326
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -32,13 +33,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function resize() {
     var w = innerWidth;
-    // var h = innerHeight;
-    var h = 400;
+    var h = innerHeight;
     
     // canvas.style.width = w+'px';
     // canvas.style.height = h+'px';
     canvas.style.width = '100%';
-    canvas.style.height = '100%';
+    canvas.style.height = '100vh';
     
     W = canvas.width = w * DPR;
     H = canvas.height = h * DPR;
@@ -112,7 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     var friends = new Array(n);
     while (n--) friends[n] = choose1(choose1(bins));
-    return friends;
+        return friends;
     };
 
     Lattice.prototype.findNearest = function(p) {
@@ -287,7 +287,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (!node.isActive) return;
             ons.push(node);
         });  
-        drawLines(ons, 'rgba(93,202,74, 0.3)', dpr(0.5));
+        drawLines(ons, 'rgba(93,202,74, 0.3)', dpr(0.7));
 
 
         /*for (var i = 0; i < C; i++) {
@@ -323,7 +323,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function activateIntersections() {
     intersections.each(function(ix) {
         var node = lattice.findNearest(ix);
-        if (node) node.activate(time, 1.5);
+        if (node) node.activate(time, 1.2);
     });
     }
 
