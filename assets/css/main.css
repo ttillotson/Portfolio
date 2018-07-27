@@ -1779,7 +1779,7 @@ input, select, textarea {
 	}
 
 	header.major h2 {
-		color: #222629;
+		color: #5dca4a;
 		font-size: 3.5em;
 	}
 
@@ -2604,7 +2604,7 @@ input, select, textarea {
 			input[type="reset"].primary:active,
 			input[type="button"].primary:active,
 			.button.primary:active {
-				background-color: #39c29d;
+				background-color: #5dca4a;
 			}
 
 		input[type="submit"].disabled, input[type="submit"]:disabled,
@@ -2837,14 +2837,14 @@ input, select, textarea {
 		/* background: rgba(0, 0, 0, 0.15); */
 	}
 	#main > #splash div h2 {
-		color: white;
+		color: #5dca4a;
 		font-size: 5em;
 		font-family: "PT Sans Narrow";
 		margin-bottom: 0.25em;
 	}
 
 	#main > #splash div h3 {
-		color: white;
+		color: #5dca4a;
 		font-size: 2.5em;
 	}
 	#canvas {
