@@ -104,7 +104,7 @@ input, select, textarea {
 		-webkit-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
 		-ms-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
 		transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
-		border-bottom: solid 1px #e4e4e4;
+		/* border-bottom: solid 1px #e4e4e4; */
 		color: inherit;
 		text-decoration: none;
 	}
@@ -2004,6 +2004,7 @@ input, select, textarea {
 		text-decoration: none;
 		border-bottom: none;
 		position: relative;
+		margin: auto;
 	}
 
 		.icon:before {
@@ -2013,7 +2014,7 @@ input, select, textarea {
 			font-style: normal;
 			font-weight: normal;
 			text-transform: none !important;
-			font-size: 1.25em;
+			font-size: 1.5em;
 			line-height: 1.75em;
 		}
 
@@ -2201,9 +2202,9 @@ input, select, textarea {
 		padding-left: 1em;
 	}
 
-		ul li {
+		/* ul li {
 			padding-left: 0.5em;
-		}
+		} */
 
 		ul.alt {
 			list-style: none;
@@ -2396,7 +2397,6 @@ input, select, textarea {
 
 		ul.icons li {
 			display: inline-block;
-			padding: 0 1em 0 0;
 		}
 
 			ul.icons li:last-child {
@@ -2678,7 +2678,7 @@ input, select, textarea {
 		position: fixed;
 		text-align: center;
 		top: 0;
-		width: 23em;
+		width: 4em;
 		left: 0;
 	}
 
@@ -2734,7 +2734,7 @@ input, select, textarea {
 			flex-shrink: 0;
 			bottom: 0;
 			left: 0;
-			padding: 2em;
+			padding: 1em;
 			width: 100%;
 		}
 
@@ -2761,7 +2761,7 @@ input, select, textarea {
 
 				#header > nav ul li {
 					display: block;
-					padding: 0;
+					padding: 0.75em 0;
 				}
 
 					#header > nav ul li a {
@@ -2773,7 +2773,8 @@ input, select, textarea {
 						transition: none;
 						border: 0;
 						color: #ffffff !important;
-						padding: 0.85em 1.5em;
+						/* padding: 0.85em 1.5em; */
+						/* padding: auto; */
 						text-decoration: none;
 					}
 
@@ -2794,7 +2795,7 @@ input, select, textarea {
 
 	#wrapper {
 		background: #C4CBCE;
-		padding-left: 23em;
+		padding-left: 4em;
 	}
 
 /* Main */
@@ -2815,10 +2816,40 @@ input, select, textarea {
 		#main > section:first-child {
 			border-top: 0;
 			display: block;
+			position: relative;
+		}
+
+		#main > section:nth-child(2) {
+			border-top: 0;
 		}
 		/* #main > #contact {
 			min-height: 86vh;
 		} */
+
+/* Splash */
+	#main > #splash div {
+		position: absolute;
+		top: 30vh;
+		width: 94vw;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		/* background: rgba(0, 0, 0, 0.15); */
+	}
+	#main > #splash div h2 {
+		color: white;
+		font-size: 5em;
+		font-family: "PT Sans Narrow";
+		margin-bottom: 0.25em;
+	}
+
+	#main > #splash div h3 {
+		color: white;
+		font-size: 2.5em;
+	}
+	#canvas {
+		border-bottom: solid 6px #f4f4f4
+	}
 
 /* Footer */
 
@@ -2867,21 +2898,41 @@ input, select, textarea {
 		/* Header */
 
 			#header {
-				width: 21em;
+				width: 3.5em;
 			}
 
 				#header > header {
 					padding: 2em;
 				}
 
-				#header > footer {
-					padding: 1.5em;
-				}
+				/* #header > footer {
+					padding: 1em;
+				} */
+
+		/* Nav */
+			#nav {
+				display: flex;
+			}
+
+			#nav > .nav_frame {
+				display: flex;
+				flex-direction: column;
+				flex-grow: 1;
+				justify-content: space-between;
+			}
+
+			#nav > .nav_frame #splash_icon {
+				margin-top: 0.5em;
+				height: 3em;
+			}
+			#nav > .nav_frame #splash_icon img {
+				width: 2.5em;
+			}
 
 		/* Wrapper */
 
 			#wrapper {
-				padding-left: 21em;
+				padding-left: 3.5em;
 			}
 
 		/* Main */
@@ -2906,25 +2957,26 @@ input, select, textarea {
 		/* Header */
 
 			#header {
-				width: 20em;
+				width: 3.5em;
 			}
 
-		/* Wrapper */
-
+			
+			/* Wrapper */
+			
 			#wrapper {
-				padding-left: 20em;
+				padding-left: 3.5em;
 			}
-
-	}
-
-/* Medium */
-
-	#titleBar {
-		display: none;
-	}
-
-	@media screen and (max-width: 1024px) {
-
+			
+		}
+		
+		/* Medium */
+		
+		#titleBar {
+			display: none;
+		}
+		
+		@media screen and (max-width: 1024px) {
+			
 		/* Basic */
 
 			html, body {
@@ -2965,12 +3017,12 @@ input, select, textarea {
 				overflow-y: auto;
 				position: fixed;
 				top: 0;
-				width: 23em;
+				width: 3.5em;
 				z-index: 10002;
-				-moz-transform: translateX(23em);
-				-webkit-transform: translateX(23em);
-				-ms-transform: translateX(23em);
-				transform: translateX(23em);
+				-moz-transform: translateX(3.5em);
+				-webkit-transform: translateX(3.5em);
+				-ms-transform: translateX(3.5em);
+				transform: translateX(3.5em);
 				left: 0;
 			}
 
@@ -2997,7 +3049,19 @@ input, select, textarea {
 				padding: 44px 0 1px 0;
 			}
 
-		/* Header Panel */
+			/* Splash */
+			
+			#main > #splash div {
+				position: absolute;
+				top: 20vh;
+				width: 100vw;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				/* background: rgba(0, 0, 0, 0.15); */
+			}
+			
+			/* Header Panel */
 
 			#titleBar {
 				-moz-backface-visibility: hidden;
@@ -3072,10 +3136,10 @@ input, select, textarea {
 					}
 
 			body.header-visible #wrapper, body.header-visible #titleBar {
-				-moz-transform: translateX(23em);
-				-webkit-transform: translateX(23em);
-				-ms-transform: translateX(23em);
-				transform: translateX(23em);
+				-moz-transform: translateX(3.5em);
+				-webkit-transform: translateX(3.5em);
+				-ms-transform: translateX(3.5em);
+				transform: translateX(3.5em);
 			}
 
 			body.header-visible #header {
@@ -3159,11 +3223,11 @@ input, select, textarea {
 		/* Header */
 
 			#header {
-				width: 17em;
-				-moz-transform: translateX(17em);
-				-webkit-transform: translateX(17em);
-				-ms-transform: translateX(17em);
-				transform: translateX(17em);
+				width: 3em;
+				-moz-transform: translateX(3em);
+				-webkit-transform: translateX(3em);
+				-ms-transform: translateX(3em);
+				transform: translateX(3em);
 				left: 0;
 			}
 
@@ -3184,9 +3248,9 @@ input, select, textarea {
 						margin: 1em 0 0 0;
 					}
 
-				#header > footer {
-					padding: 1.5em;
-				}
+					#header > footer {
+						padding: 1em;
+					}
 
 		/* Main */
 
@@ -3226,10 +3290,10 @@ input, select, textarea {
 				}
 
 			body.header-visible #wrapper, body.header-visible #titleBar {
-				-moz-transform: translateX(-17em);
-				-webkit-transform: translateX(-17em);
-				-ms-transform: translateX(-17em);
-				transform: translateX(-17em);
+				-moz-transform: translateX(3em);
+				-webkit-transform: translateX(3em);
+				-ms-transform: translateX(3em);
+				transform: translateX(3em);
 			}
 
 	}
