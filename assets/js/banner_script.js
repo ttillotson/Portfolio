@@ -1,10 +1,12 @@
 // Banner Credit CodePen User: satchmorun <https://codepen.io/satchmorun/pen/OyxJme>
 // To Adjust Banner Image
-// Speed: Line 50 -> setTimeout on loop call
-// Background - Color: Line 280 
-// Line - Color/Thickness: Line 291 
-// Zoom: Line 265 -> dpr parameter
-// Density Line 326
+// Speed: Line 51 -> count in loop call
+// Background - Color: Line 302 
+// Line - Color/Thickness: Line 313
+// Zoom: Line 277 -> dpr parameter
+// Density Line 311 - dps(1.1)
+
+// Density overall is affected by Line Density and Decay Rate
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -27,6 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
     /*---------------------------------------------------------------------------*/
 
     var W, H, frame, t0, time, stop;
+    let count;
     var DPR = devicePixelRatio;
 
     function dpr(n) { return n * DPR; }
@@ -46,10 +49,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function loop(t) {
         if (!stop) {
-            frame = requestAnimationFrame(() => setTimeout(loop, 75));
-            draw();
-            // name();
+            frame = requestAnimationFrame(loop); 
+            if (!time || count % 4 === 0) {
+                draw();
+                count = 0;
+            }
             time++;
+            count++;
         }
     }
 
@@ -70,6 +76,9 @@ document.addEventListener("DOMContentLoaded", () => {
         init();
         time = 0;
         stop = false;
+        count = 0;
+
+        // Start Cycle
         frame = requestAnimationFrame(loop);
     }
 
@@ -267,14 +276,15 @@ document.addEventListener("DOMContentLoaded", () => {
     var ons;
     var lattice;
     var NODES_PER_BIN = 1;
-    var DECAY = 0.97;
+    var DECAY = 0.95;
+    
 
     var C = 20;
     var circles = new Array(C);
     var intersections = new Arr(C*C);
 
     function init() {
-        var res = dpr(35);
+        var res = dpr(50);
         lattice = new Lattice(W, H, res);  
         ons = new Arr(floor((W/res) * (H/res) * NODES_PER_BIN));
         
@@ -300,7 +310,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (!node.isActive) return;
             ons.push(node);
         });  
-        drawLines(ons, 'rgba(93,202,74, 0.3)', dpr(0.7));
+        drawLines(ons, 'rgba(93,202,74, 0.3)', dpr(1.1));
 
 
         /*for (var i = 0; i < C; i++) {
@@ -336,7 +346,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function activateIntersections() {
     intersections.each(function(ix) {
         var node = lattice.findNearest(ix);
-        if (node) node.activate(time, 1.2);
+        if (node) node.activate(time, 1.0);
     });
     }
 

@@ -2794,7 +2794,7 @@ input, select, textarea {
 /* Wrapper */
 
 	#wrapper {
-		background: #C4CBCE;
+		background: rgb(34, 49, 63);
 		padding-left: 4em;
 	}
 
