@@ -48,6 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!stop) {
             frame = requestAnimationFrame(() => setTimeout(loop, 75));
             draw();
+            // name();
             time++;
         }
     }
@@ -70,6 +71,18 @@ document.addEventListener("DOMContentLoaded", () => {
         time = 0;
         stop = false;
         frame = requestAnimationFrame(loop);
+    }
+
+    function name() {
+        // ctx.font = "3em Comic Sans MS";
+        ctx.font = "5em PT Sans Narrow";
+        ctx.fillStyle = "#8C3D83";
+        ctx.textAlign = "center";
+        ctx.fillText("Hi,", canvas.width/2, canvas.height/2 - 250);
+        ctx.fillText("I'm Travis", canvas.width/2, canvas.height/2 + 250);
+        // ctx.fillText("Hey", canvas.width/2, canvas.height/2 + 250);
+        // ctx.fillText("Hey", canvas.width/2, canvas.height/2 + 250);
+        // ctx.fillText("Hey", canvas.width/2, canvas.height/2 + 250);
     }
 
     /*---------------------------------------------------------------------------*/

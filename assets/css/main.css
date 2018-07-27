@@ -2734,7 +2734,7 @@ input, select, textarea {
 			flex-shrink: 0;
 			bottom: 0;
 			left: 0;
-			padding: 2em;
+			padding: 1em;
 			width: 100%;
 		}
 
@@ -2875,9 +2875,9 @@ input, select, textarea {
 					padding: 2em;
 				}
 
-				#header > footer {
+				/* #header > footer {
 					padding: 1em;
-				}
+				} */
 
 		/* Nav */
 			#nav {
@@ -2910,10 +2910,6 @@ input, select, textarea {
 			#main > section > .container {
 				padding: 4em 0 2em 0;
 				margin: auto;
-			}
-
-			#canvas {
-				/* position: absolute; */
 			}
 
 	}
@@ -3185,11 +3181,11 @@ input, select, textarea {
 		/* Header */
 
 			#header {
-				width: 17em;
-				-moz-transform: translateX(17em);
-				-webkit-transform: translateX(17em);
-				-ms-transform: translateX(17em);
-				transform: translateX(17em);
+				width: 3em;
+				-moz-transform: translateX(3em);
+				-webkit-transform: translateX(3em);
+				-ms-transform: translateX(3em);
+				transform: translateX(3em);
 				left: 0;
 			}
 
@@ -3210,9 +3206,9 @@ input, select, textarea {
 						margin: 1em 0 0 0;
 					}
 
-				#header > footer {
-					padding: 1.5em;
-				}
+					#header > footer {
+						padding: 1em;
+					}
 
 		/* Main */
 
@@ -3252,10 +3248,10 @@ input, select, textarea {
 				}
 
 			body.header-visible #wrapper, body.header-visible #titleBar {
-				-moz-transform: translateX(-17em);
-				-webkit-transform: translateX(-17em);
-				-ms-transform: translateX(-17em);
-				transform: translateX(-17em);
+				-moz-transform: translateX(3em);
+				-webkit-transform: translateX(3em);
+				-ms-transform: translateX(3em);
+				transform: translateX(3em);
 			}
 
 	}
