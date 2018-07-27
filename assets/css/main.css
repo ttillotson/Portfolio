@@ -1,12 +1,6 @@
 @import url("font-awesome.min.css");
 @import url("https://fonts.googleapis.com/css?family=Lato:400,400italic,700,700italic|Source+Code+Pro:400");
 
-/*
-	Read Only by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-*/
-
 html, body, div, span, applet, object,
 iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
 pre, a, abbr, acronym, address, big, cite,
@@ -110,7 +104,7 @@ input, select, textarea {
 		-webkit-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
 		-ms-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
 		transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
-		border-bottom: solid 1px #e4e4e4;
+		/* border-bottom: solid 1px #e4e4e4; */
 		color: inherit;
 		text-decoration: none;
 	}
@@ -2010,6 +2004,7 @@ input, select, textarea {
 		text-decoration: none;
 		border-bottom: none;
 		position: relative;
+		margin: auto;
 	}
 
 		.icon:before {
@@ -2684,7 +2679,7 @@ input, select, textarea {
 		position: fixed;
 		text-align: center;
 		top: 0;
-		width: 23em;
+		width: 4em;
 		left: 0;
 	}
 
@@ -2779,7 +2774,8 @@ input, select, textarea {
 						transition: none;
 						border: 0;
 						color: #ffffff !important;
-						padding: 0.85em 1.5em;
+						/* padding: 0.85em 1.5em; */
+						/* padding: auto; */
 						text-decoration: none;
 					}
 
@@ -2800,22 +2796,31 @@ input, select, textarea {
 
 	#wrapper {
 		background: #C4CBCE;
-		padding-left: 23em;
+		padding-left: 4em;
 	}
 
 /* Main */
 
 	#main > section {
 		border-top: solid 6px #f4f4f4;
+		min-height: 100vh;
+		display: flex;
+		justify-content: center;
 	}
 
 		#main > section > .container {
 			padding: 6em 0 4em 0;
+			align-content: center;
+			margin: auto;
 		}
 
 		#main > section:first-child {
 			border-top: 0;
+			display: block;
 		}
+		/* #main > #contact {
+			min-height: 86vh;
+		} */
 
 /* Footer */
 
@@ -2864,7 +2869,7 @@ input, select, textarea {
 		/* Header */
 
 			#header {
-				width: 21em;
+				width: 3.5em;
 			}
 
 				#header > header {
@@ -2878,13 +2883,14 @@ input, select, textarea {
 		/* Wrapper */
 
 			#wrapper {
-				padding-left: 21em;
+				padding-left: 3.5em;
 			}
 
 		/* Main */
 
 			#main > section > .container {
 				padding: 4em 0 2em 0;
+				margin: auto;
 			}
 
 	}
@@ -2902,13 +2908,13 @@ input, select, textarea {
 		/* Header */
 
 			#header {
-				width: 20em;
+				width: 3.5em;
 			}
 
 		/* Wrapper */
 
 			#wrapper {
-				padding-left: 20em;
+				padding-left: 3.5em;
 			}
 
 	}
@@ -2961,12 +2967,12 @@ input, select, textarea {
 				overflow-y: auto;
 				position: fixed;
 				top: 0;
-				width: 23em;
+				width: 3.5em;
 				z-index: 10002;
-				-moz-transform: translateX(23em);
-				-webkit-transform: translateX(23em);
-				-ms-transform: translateX(23em);
-				transform: translateX(23em);
+				-moz-transform: translateX(3.5em);
+				-webkit-transform: translateX(3.5em);
+				-ms-transform: translateX(3.5em);
+				transform: translateX(3.5em);
 				left: 0;
 			}
 
@@ -3068,10 +3074,10 @@ input, select, textarea {
 					}
 
 			body.header-visible #wrapper, body.header-visible #titleBar {
-				-moz-transform: translateX(23em);
-				-webkit-transform: translateX(23em);
-				-ms-transform: translateX(23em);
-				transform: translateX(23em);
+				-moz-transform: translateX(3.5em);
+				-webkit-transform: translateX(3.5em);
+				-ms-transform: translateX(3.5em);
+				transform: translateX(3.5em);
 			}
 
 			body.header-visible #header {
@@ -3188,6 +3194,7 @@ input, select, textarea {
 
 			#main > section > .container {
 				padding: 2em 0 0 0;
+				margin: auto;
 			}
 
 		/* Footer */
